@@ -1,0 +1,77 @@
+/* css/variables.css */
+/* Дизайн-система языковой школы */
+
+:root {
+    /* ===== ЦВЕТА ===== */
+    /* Основные (бренд) */
+    --color-primary: #2563eb;          /* Основной синий — кнопки, ссылки */
+    --color-primary-hover: #1d4ed8;    /* Синий при наведении */
+    --color-primary-light: #dbeafe;    /* Светло-синий фон */
+
+    /* Акцентный */
+    --color-accent: #f59e0b;           /* Оранжевый — выделение, CTA-акценты */
+    --color-accent-hover: #d97706;
+
+    /* Текстовые */
+    --color-text-main: #1f2937;        /* Основной текст */
+    --color-text-secondary: #6b7280;   /* Второстепенный текст */
+    --color-text-inverse: #ffffff;     /* Текст на темном фоне */
+
+    /* Фоны */
+    --color-bg-main: #ffffff;          /* Основной фон */
+    --color-bg-light: #f9fafb;         /* Светлый фон секций */
+    --color-bg-dark: #111827;          /* Темный фон (футер) */
+
+    /* Служебные */
+    --color-border: #e5e7eb;           /* Границы */
+    --color-error: #dc2626;            /* Ошибки в форме */
+    --color-success: #16a34a;          /* Успех */
+
+    /* ===== ШРИФТЫ ===== */
+    --font-heading: 'Montserrat', 'Arial', sans-serif;   /* Заголовки */
+    --font-body: 'Open Sans', 'Arial', sans-serif;       /* Основной текст */
+
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.5rem;     /* 24px */
+    --font-size-2xl: 2rem;      /* 32px */
+    --font-size-3xl: 2.5rem;    /* 40px */
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.5;
+    --line-height-loose: 1.8;
+
+    /* ===== ОТСТУПЫ ===== */
+    --space-xs: 0.25rem;   /* 4px */
+    --space-sm: 0.5rem;    /* 8px */
+    --space-md: 1rem;      /* 16px */
+    --space-lg: 1.5rem;    /* 24px */
+    --space-xl: 2rem;      /* 32px */
+    --space-2xl: 3rem;     /* 48px */
+    --space-3xl: 4rem;     /* 64px */
+
+    /* ===== СКРУГЛЕНИЯ ===== */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;   /* Круглые кнопки */
+
+    /* ===== ТЕНИ ===== */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+    /* ===== ПЕРЕХОДЫ ===== */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+
+    /* ===== КОНТЕЙНЕР ===== */
+    --container-width: 1200px;
+    --container-padding: 20px;
+}

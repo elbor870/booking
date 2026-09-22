@@ -1,0 +1,110 @@
+/* css/components/slider.css */
+
+/* --- Контейнер слайдера --- */
+.slider {
+    position: relative; /* Чтобы кнопки позиционировались относительно слайдера */
+    width: 100%;
+    overflow: hidden; /* Скрываем слайды, которые не влезли */
+    padding: 0 50px; /* Отступы по бокам для кнопок */
+    box-sizing: border-box;
+    margin-bottom: 60px;
+}
+
+/* --- Дорожка слайдов (лента, которая двигается) --- */
+.slider__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Плавная прокрутка */
+    gap: 24px; /* Расстояние между карточками */
+}
+
+/* --- Отдельный слайд --- */
+.slider__slide {
+    flex: 0 0 calc(33.333% - 16px); /* Показываем по 3 карточки в ряд */
+    box-sizing: border-box;
+}
+
+/* Адаптив: на планшетах 2 карточки, на телефонах 1 */
+@media (max-width: 992px) {
+    .slider__slide {
+        flex: 0 0 calc(50% - 12px);
+    }
+}
+
+@media (max-width: 576px) {
+    .slider__slide {
+        flex: 0 0 100%;
+    }
+    .slider {
+        padding: 0 40px; /* Уменьшаем отступы для кнопок на мобильных */
+    }
+}
+
+/* --- Кнопки "Вперед/Назад" --- */
+.slider__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #333;
+    z-index: 10;
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.slider__btn:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slider__btn--prev {
+    left: 0;
+}
+
+.slider__btn--next {
+    right: 0;
+}
+
+/* Иконки стрелок внутри кнопок (рисуются через CSS) */
+.slider__btn::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+}
+
+.slider__btn--prev::before {
+    transform: rotate(-135deg);
+    margin-left: 4px; /* Небольшая коррекция для центровки */
+}
+
+.slider__btn--next::before {
+    transform: rotate(45deg);
+    margin-right: 4px; /* Небольшая коррекция для центровки */
+}
+
+/* 
+   ПРИМЕЧАНИЕ ПО ИСПОЛЬЗОВАНИЮ:
+   Чтобы слайдер заработал, в HTML нужно заменить <div class="courses__grid"> на:
+   
+   <div class="slider">
+       <button class="slider__btn slider__btn--prev"></button>
+       <div class="slider__track">
+           <div class="slider__slide"> <article class="course-card">...</article> </div>
+           <div class="slider__slide"> <article class="course-card">...</article> </div>
+           ...
+       </div>
+       <button class="slider__btn slider__btn--next"></button>
+   </div>
+*/

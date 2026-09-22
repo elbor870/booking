@@ -1,0 +1,103 @@
+/* css/calculator.css */
+/* Компонент: калькулятор стоимости */
+
+.calculator {
+    margin-top: var(--space-3xl);
+    padding: var(--space-2xl);
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.calculator__title {
+    text-align: center;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-main);
+}
+
+.calculator__form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+.calculator__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.calculator__field > label,
+.calculator__field > span {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-main);
+}
+
+.calculator__field input[type="number"],
+.calculator__field select {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-base);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.calculator__field input[type="number"]:focus,
+.calculator__field select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.calculator__field input[type="radio"] {
+    accent-color: var(--color-primary);
+    margin-right: var(--space-xs);
+    cursor: pointer;
+}
+
+.calculator__field label {
+    cursor: pointer;
+}
+
+/* Блок вывода результата */
+.calculator__result {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.calculator__result #total-price {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .calculator {
+        padding: var(--space-lg);
+        margin-top: var(--space-2xl);
+    }
+
+    .calculator__title { font-size: var(--font-size-xl); }
+
+    .calculator__result { font-size: var(--font-size-lg); }
+    .calculator__result #total-price { font-size: var(--font-size-xl); }
+}

@@ -1,0 +1,379 @@
+/* css/main.css */
+/* Базовая типографика и общие стили */
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+}
+
+/* ===== ЗАГОЛОВКИ ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-main);
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-lg);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-md);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-sm);
+}
+
+/* ===== ТЕКСТ ===== */
+p {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--space-md);
+}
+
+small {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+a {
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
+}
+
+/* ===== ПРИЖИМАЕМ ФУТЕР К НИЗУ ===== */
+/* Это понадобится Даниилу (задача 9) */
+/* КТО УДАЛИТ, ТОТ ЛОХ ) */
+.footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-inverse);
+    padding: var(--space-2xl) 0 var(--space-lg);
+    margin-top: var(--space-2xl);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-2xl);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-title {
+    color: var(--color-text-inverse);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-md);
+}
+
+.footer-description {
+    color: var(--color-primary-light);
+    max-width: 350px;
+    margin-bottom: 0;
+}
+
+.footer-contacts {
+    font-style: normal;
+}
+
+.footer-contacts p {
+    color: var(--color-text-inverse);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-contacts strong {
+    font-weight: var(--font-weight-medium);
+}
+
+.footer a {
+    color: var(--color-primary-light);
+    text-decoration: none;
+    transition:
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+.footer a:hover {
+    color: var(--color-accent);
+}
+
+.footer a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer-nav a {
+    width: fit-content;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-md);
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+/* ===== АДАПТИВНОСТЬ FOOTER ===== */
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .footer {
+        padding-top: var(--space-xl);
+    }
+
+    .footer-bottom {
+        margin-top: var(--space-xl);
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ===== УТИЛИТЫ ===== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+
+/* ===== ОТЗЫВЫ (боты) ===== */
+
+.reviews {
+    padding: 80px 0;
+}
+
+.reviews__title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.reviews__slider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.reviews__track {
+    width: 100%;
+    overflow: hidden;
+}
+
+.review-card {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+    position: absolute;
+    
+}
+
+.review-card--active {
+    position: relative;
+    background: #ffffff;
+    color: #c44569;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    border-radius: 50px;
+    padding: 40px 30px;
+
+    
+    
+}
+
+.review-card__photo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.review-card__name {
+    margin-bottom: 10px;
+}
+
+.review-card__text {
+    margin: 0;
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.reviews__button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    background: #eee;
+    flex-shrink: 0;
+}
+
+.reviews__button:hover {
+    background: #ddd;
+}
+
+.reviews__dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.reviews__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+}
+
+.reviews__dot--active {
+    background: #333;
+}
+
+@media (max-width: 600px) {
+    .review-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .reviews__slider {
+        gap: 10px;
+    }
+}
+
+.reviews__list {
+    position: relative;
+    min-height: 250px;
+}
+/* COURSES.HTML>>>>>>>>> */
+/* ===== ЗАГОЛОВОК СЕКЦИИ (общий паттерн для страниц) ===== */
+
+.section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto var(--space-2xl);
+}
+
+.section-heading__label {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-md);
+}
+
+.section-heading__title {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-text-main);
+}
+
+.section-heading__text {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+}
+
+/* ===== СЕКЦИЯ КУРСОВ (общий каркас) ===== */
+.courses {
+    padding: var(--space-2xl) 0;
+    background-color: transparent; 
+}
+
+/* ===== СЕТКА (общий паттерн для карточек) ===== */
+.courses__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+}
+
+/* ===== АДАПТИВ ЗАГОЛОВКА ===== */
+@media (max-width: 768px) {
+    .section-heading__title { font-size: var(--font-size-2xl); }
+    .section-heading__text  { font-size: var(--font-size-base); }
+
+    .courses__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}
+/* <<<<<<<<<COURSES.HTML */

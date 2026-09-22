@@ -1,0 +1,88 @@
+/* css/components/cards.css */
+
+/* --- Сетка каталога курсов --- */
+.courses__grid {
+    display: grid;
+    /* Автоматически подстраивает количество колонок. Минимальная ширина карточки 280px */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px; /* Отступ до калькулятора */
+}
+
+/* --- Базовая карточка курса --- */
+.course-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Чтобы картинка не вылезала за скругленные углы */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Мягкая тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Растягиваем карточку на всю высоту ячейки сетки */
+}
+
+/* Эффект при наведении на карточку */
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Верхняя часть: Картинка (в вашем коде это div с текстом) --- */
+.course-card__image {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Цветовые модификаторы для картинок (градиенты вместо реальных фото) */
+.course-card__image--english {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.course-card__image--speaking {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+.course-card__image--ielts {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+.course-card__image--business {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+/* --- Нижняя часть: Контент --- */
+.course-card__content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Растягивает контент, чтобы цена была прижата к низу */
+}
+
+.course-card__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.course-card__description {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Заставляет описание занимать свободное место */
+}
+
+.course-card__price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-top: auto; /* Прижимает цену к самому низу */
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+}

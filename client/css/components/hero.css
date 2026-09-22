@@ -1,0 +1,62 @@
+/* css/components/hero.css */
+
+.hero {
+    /* Используем переменные из variables.css (Задача 2) */
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-white) 100%);
+    /* Если у Артёма нет переменной для градиента, можно использовать цвета напрямую, 
+       но лучше уточнить у него. Пока используем заглушки: */
+    /* background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%); */
+    
+    padding: 120px 0; /* Большие отступы для "воздуха" */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Текст прижат влево */
+    max-width: 800px; /* Ограничиваем ширину, чтобы текст не растягивался на весь экран */
+    margin: 0 auto; /* Центрируем контейнер */
+    width: 100%;
+}
+
+.hero__title {
+    /* Используем шрифты и цвета из variables.css */
+    font-family: var(--font-heading, sans-serif); 
+    font-size: 3.5rem;
+    line-height: 1.2;
+    color: var(--color-text-main, #333);
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.hero__subtitle {
+    font-family: var(--font-body, sans-serif);
+    font-size: 1.25rem;
+    color: var(--color-text-secondary, #666);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .hero__container {
+        align-items: center; /* Центрируем контент на мобильных */
+    }
+
+    .hero__title {
+        font-size: 2.2rem;
+    }
+    
+    .hero__subtitle {
+        font-size: 1rem;
+    }
+}

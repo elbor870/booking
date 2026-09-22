@@ -1,0 +1,166 @@
+/* css/components/buttons.css */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    min-height: 48px;
+    padding: 16px 36px;
+    border: none;
+    border-radius: var(--radius-full);
+    font-family: var(--font-heading);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--color-primary-light);
+    outline-offset: 3px;
+}
+
+/* ===== CTA "Записаться" ===== */
+
+.btn--primary {
+    background: linear-gradient(
+        135deg,
+        #ff6b6b 0%,
+        #ee5a6f 50%,
+        #c44569 100%
+    );
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(238, 90, 111, 0.45);
+}
+
+.btn--primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.btn--primary:hover::before {
+    left: 100%;
+}
+
+.btn--primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    color: #ffffff;
+    box-shadow: 0 14px 35px rgba(238, 90, 111, 0.6);
+    background: linear-gradient(
+        135deg,
+        #ff7b7b 0%,
+        #f06a7f 50%,
+        #d45579 100%
+    );
+}
+
+.btn--primary:active {
+    transform: translateY(-1px) scale(0.99);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(238, 90, 111, 0.5);
+}
+
+/* ===== CTA "Рассчитать" ===== */
+
+.btn--secondary {
+    background-color: var(--color-accent);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-md);
+}
+
+.btn--secondary:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.btn--secondary:active {
+    background-color: var(--color-accent-hover);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(0);
+}
+
+/* ===== Светлая CTA-кнопка ===== */
+
+.btn--light {
+    background-color: #ffffff;
+    color: #c44569;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn--light:hover {
+    background-color: #ffffff;
+    color: #c44569;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.btn--light:active {
+    background-color: #f8f8f8;
+    color: #c44569;
+    transform: translateY(-1px) scale(0.99);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Большая кнопка ===== */
+
+.btn--large {
+    min-height: 56px;
+    padding: 20px 48px;
+    font-size: var(--font-size-lg);
+}
+
+/* ===== Анимация CTA ===== */
+
+.btn--pulse {
+    animation: button-pulse 2.5s infinite;
+}
+
+@keyframes button-pulse {
+    0%, 100% {
+        box-shadow:
+            0 8px 25px rgba(238, 90, 111, 0.45),
+            0 0 0 0 rgba(238, 90, 111, 0.7);
+    }
+
+    70% {
+        box-shadow:
+            0 8px 25px rgba(238, 90, 111, 0.45),
+            0 0 0 18px rgba(238, 90, 111, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .btn--pulse {
+        transition: none;
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn--large {
+        min-height: 48px;
+        padding: 16px 32px;
+        font-size: var(--font-size-base);
+    }
+}

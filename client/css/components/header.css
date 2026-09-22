@@ -1,0 +1,110 @@
+/* css/components/header.css */
+
+.header {
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.header__container {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.header__logo {
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--color-text-main);
+    text-decoration: none;
+}
+
+.header__logo:hover {
+    color: var(--color-primary);
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-lg);
+}
+
+.header__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--space-sm) 0;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.header__link:hover {
+    color: var(--color-primary);
+}
+
+.header__link:focus-visible,
+.header__logo:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+}
+
+.header__link--cta {
+    padding: var(--space-sm) var(--space-lg);
+}
+
+.header__link--cta:hover {
+    color: var(--color-text-inverse);
+}
+
+@media (max-width: 768px) {
+    .header__container {
+        min-height: 64px;
+    }
+
+    .header__nav {
+        gap: var(--space-md);
+    }
+
+    .header__link:not(.header__link--cta) {
+        font-size: var(--font-size-xs);
+    }
+
+    .header__link--cta {
+        padding: var(--space-sm) var(--space-md);
+    }
+}
+
+@media (max-width: 520px) {
+    .header__container {
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--space-sm);
+        padding-top: var(--space-sm);
+        padding-bottom: var(--space-sm);
+    }
+
+    .header__nav {
+        width: 100%;
+        justify-content: center;
+        gap: var(--space-sm);
+    }
+
+    .header__link {
+        min-height: 40px;
+    }
+}
