@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на курс - Языковая школа</title>
+    
+    <!-- 2. Сброс стилей -->
+    <link rel="stylesheet" href="css/reset.css">
+
+    <!-- 3. Переменные (должны идти до всего, что их использует) -->
+    <link rel="stylesheet" href="css/variables.css">
+
+    <!-- 4. Общие стили -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- 5. Стили компонентов -->
+    <link rel="stylesheet" href="css/components/hero.css">
+
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            padding: 40px 20px;
+        }
+
+        .booking-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: #34495e;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e6ed;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-input.error {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .submit-btn:not(:disabled):hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!--Алексеев header  -->
+    <header class="header">
+    <div class="container header__container">
+        <a
+            class="header__logo"
+            href="index.html"
+            aria-label="LINGUA — главная страница"
+        >
+            LINGUA
+        </a>
+
+        <nav class="header__nav" aria-label="Основная навигация">
+            <a class="header__link" href="index.html">
+                Главная
+            </a>
+
+            <a class="header__link" href="courses.html">
+                Курсы
+            </a>
+
+            <a
+                class="btn btn--primary header__link--cta"
+                href="booking.html"
+            >
+                Записаться
+            </a>
+        </nav>
+    </div>
+</header>
+    <div class="booking-container">
+        <h2 class="booking-title">Записаться на курс</h2>
+        <form id="bookingForm">
+            <!-- Поле ФИО -->
+            <div class="form-group">
+                <label class="form-label" for="fullName">ФИО *</label>
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    class="form-input" 
+                    required
+                    placeholder="Иванов Иван Иванович"
+                >
+                <div class="error-message" id="fullNameError">Введите корректное ФИО (минимум 3 символа)</div>
+            </div>
+
+            <!-- Поле Телефон -->
+            <div class="form-group">
+                <label class="form-label" for="phone">Телефон *</label>
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    class="form-input" 
+                    required
+                    placeholder="+7(XXX)-XXX-XX-XX"
+                >
+                <div class="error-message" id="phoneError">Введите телефон в формате +7(XXX)-XXX-XX-XX</div>
+            </div>
+
+            <!-- Поле Email -->
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    class="form-input" 
+                    placeholder="example@mail.ru"
+                >
+                <div class="error-message" id="emailError">Введите корректный адрес электронной почты</div>
+            </div>
+
+            <!-- Выбор курса -->
+            <div class="form-group">
+                <label class="form-label" for="course">Курс *</label>
+                <select id="course" class="form-input" required>
+                    <option value="">Выберите курс</option>
+                    <option value="english">Английский А1 - С2</option>
+                    <option value="german">Немецкий А1 - С1</option>     
+                    <option value="france">Французский А1 - С1</option>
+                    <option value="spain">Испанский А1 - С1</option>
+                    <option value="italian">Итальянский А1 - В2</option>
+                    <option value="china">Китайский HSK 1 -5 </option>
+                    <option value="japanese">Японский N5 - N3</option>  
+                    <option value="russian">Русский (для иностранца) A1 - C1</option> 
+                </select>
+                <div class="error-message" id="courseError">Выберите курс</div>
+            </div>
+
+            <!-- Чекбокс согласия -->
+            <div class="form-group checkbox-group">
+                <input 
+                    type="checkbox" 
+                    id="privacyAgree" 
+                    class="form-checkbox" 
+                    required
+                >
+                <label class="form-label" for="privacyAgree">
+                    Согласен на обработку персональных данных *
+                </label>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <button type="submit" class="submit-btn" disabled>Записаться</button>
+        </form>
+    </div>
+
+    <!-- КТО УДАЛИТ, ТОТ ЛОХ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-title">Название сайта</h3>
+                    <p class="footer-description">
+                        Современная языковая школа для изучения иностранных языков. Имба ЖЕСТЬ. Не верите?? Запишитесь, твари!
+                    </p>
+                </div>
+    
+                <div class="footer-column">
+                    <h3 class="footer-title">Контакты</h3>
+                    <address class="footer-contacts">
+                        <p>
+                            <strong>Адрес:</strong><br>
+                            г. Москва, ул. Примерная, д. 10
+                        </p>
+                        <p>
+                            <strong>Телефон:</strong><br>
+                            <a href="tel:+88005553535">
+                                +7 (495) 123-45-67
+                            </a>
+                        </p>
+                        <p>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:Mucixmatho@ya.ru">
+                                Mucixmatho@ya.ru
+                            </a>
+                        </p>
+                    </address>
+                </div>
+    
+                <div class="footer-column">
+                    <h3 class="footer-title">Навигация</h3>
+                    <nav class="footer-nav" aria-label="Навигация в подвале">
+                        <a href="index.html">Главная</a>
+                        <a href="courses.html">Курсы</a>
+                        <a href="booking.html">Записаться на урок</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Получаем элементы формы
+        const form = document.getElementById('bookingForm');
+        const fullNameInput = document.getElementById('fullName');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const courseInput = document.getElementById('course');
+        const privacyCheckbox = document.getElementById('privacyAgree');
+        const submitBtn = document.querySelector('.submit-btn');
+        const formInputs = form.querySelectorAll('.form-input[required]');
+
+        // Маска для телефона
+        phoneInput.addEventListener('input', function(e) {
+            // Оставляем только цифры
+            let value = e.target.value.replace(/\D/g, '');
+            // Форматируем под нужный шаблон
+            let formattedValue = '';
+
+            if (value.startsWith('8')) {
+                value = value.replace('8', '7');
+            } else if (!value.startsWith('7')) {
+                value = '7' + value;
+            }
+
+            // Строим маску
+            if (value.length >= 1) formattedValue = `+${value[0]}`;
+            if (value.length >= 2) formattedValue += `(${value.substring(1, 4)}`;
+            if (value.length >= 4) formattedValue += `)-${value.substring(4, 7)}`;
+            if (value.length >= 7) formattedValue += `-${value.substring(7, 9)}`;
+            if (value.length >= 9) formattedValue += `-${value.substring(9, 11)}`;
+
+            // Ограничиваем длину
+            if (formattedValue.length > 18) {
+                formattedValue = formattedValue.substring(0, 18);
+            }
+
+            e.target.value = formattedValue;
+        });
+
+        // Активация кнопки при согласии на обработку данных
+        privacyCheckbox.addEventListener('change', function() {
+            submitBtn.disabled = !this.checked;
+        });
+
+        // Валидация Email
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+            return regex.test(email);
+        }
+
+        // Универсальная функция для показа ошибок
+        function showError(input, errorElementId, message) {
+            input.classList.add('error');
+            const errorElement = document.getElementById(errorElementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(input, errorElementId) {
+            input.classList.remove('error');
+            const errorElement = document.getElementById(errorElementId);
+            errorElement.style.display = 'none';
+        }
+
+        // Валидация полей при вводе
+        formInputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                switch(this.id) {
+                    case 'fullName':
+                        if (this.value.trim().length < 3) {
+                            showError(this, 'fullNameError', 'Введите корректное ФИО (минимум 3 символа)');
+                        } else {
+                            hideError(this, 'fullNameError');
+                        }
+                        break;
+                    case 'phone':
+                        if (this.value.length !== 17) {
+                            showError(this, 'phoneError', 'Введите телефон в формате +7(XXX)-XXX-XX-XX');
+                        } else {
+                            hideError(this, 'phoneError');
+                        }
+                        break;
+                    case 'course':
+                        if (!this.value) {
+                            showError(this, 'courseError', 'Выберите курс');
+                        } else {
+                            hideError(this, 'courseError');
+                        }
+                        break;
+                }
+            });
+        });
+
+        // Валидация Email при вводе
+        emailInput.addEventListener('blur', function() {
+            if (this.value && !validateEmail(this.value)) {
+                showError(this, 'emailError', 'Введите корректный адрес электронной почты');
+            } else {
+                hideError(this, 'emailError');
+            }
+        });
+
+        // Общая валидация при отправке формы
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Проверка ФИО
+            if (fullNameInput.value.trim().length < 3) {
+                showError(fullNameInput, 'fullNameError', 'Введите корректное ФИО (минимум 3 символа)');
+                isValid = false;
+            } else {
+                hideError(fullNameInput, 'fullNameError');
+            }
+
+            // Проверка телефона
+            if (phoneInput.value.length !== 17) {
+                showError(phoneInput, 'phoneError', 'Введите телефон в формате +7(XXX)-XXX-XX-XX');
+                isValid = false;
+            } else {
+                hideError(phoneInput, 'phoneError');
+            }
+
+            // Проверка курса
+            if (!courseInput.value) {
+                showError(courseInput, 'courseError', 'Выберите курс');
+                isValid = false;
+            } else {
+                hideError(courseInput, 'courseError');
+            }
+
+            // Проверка Email (если заполнен)
+            if (emailInput.value && !validateEmail(emailInput.value)) {
+                showError(emailInput, 'emailError', 'Введите корректный адрес электронной почты');
+                isValid = false;
+            } else {
+                hideError(emailInput, 'emailError');
+            }
+
+            // Проверка согласия
+            if (!privacyCheckbox.checked) {
+                submitBtn.disabled = true;
+                isValid = false;
+            }
+
+            // Если всё корректно - отправляем форму
+            if (isValid) {
+                alert('Запись успешно отправлена! Мы скоро свяжемся с вами.');
+                form.reset();
+                submitBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
