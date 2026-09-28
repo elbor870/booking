@@ -1,27 +1,96 @@
-// server/index.js
-
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
-
-// Подключаем роутеры
-const coursesRouter = require('./routes/courses');
-const bookingsRouter = require('./routes/bookings');
-const reviewsRouter = require('./routes/reviews');
-const calculateRouter = require('./routes/calculate'); 
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// === MIDDLEWARE ===
-// Учим сервер понимать JSON в теле запроса
+/* ============================================================
+ * MIDDLEWARE
+ * ============================================================ */
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Раздаём статику фронтенда из папки client/
-app.use(express.static(path.join(__dirname, '..', 'client')));
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const ms = Date.now() - start;
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} → ${res.statusCode} (${ms}ms)`);
+  });
+  next();
+});
 
-// === ROUTES ===
-// Все /api/* запросы идут к соответствующим роутерам
-app.use('/api', coursesRouter);
-app.use('/api', bookingsRouter);
-app.use('/api', reviewsRouter);
-app.use('/api', calculateRouter); 
+/* ============================================================
+ * СТАТИКА
+ * ============================================================ */
+const CLIENT_DIR = path.join(__dirname, '..', 'client');
+app.use(express.static(CLIENT_DIR));
+
+/* ============================================================
+ * API-РОУТЫ
+ * ============================================================ */
+
+// --- Курсы (Агизов И.Д.) ---
+const coursesRouter = require('./routes/courses');
+app.use('/api/courses', coursesRouter);
+
+// --- Калькулятор (Ларина А.Е.) ---
+const calculateRouter = require('./routes/calculate');
+app.use('/api', calculateRouter);
+
+// --- Записи (Выдрина В.И.) --- раскомментировать, когда будет готово:
+// const bookingsRouter = require('./routes/bookings');
+// app.use('/api/bookings', bookingsRouter);
+
+// --- Отзывы (Грищенко Р.А.) --- раскомментировать, когда будет готово:
+// const reviewsRouter = require('./routes/reviews');
+// app.use('/api/reviews', reviewsRouter);
+
+/* ============================================================
+ * СЛУЖЕБНЫЕ ЭНДПОИНТЫ
+ * ============================================================ */
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+/* ============================================================
+ * 404
+ * ============================================================ */
+app.use('/api', (req, res) => {
+  res.status(404).json({
+    error: true,
+    message: `Эндпоинт ${req.method} ${req.originalUrl} не найден`,
+    field: null
+  });
+});
+
+app.use((req, res) => {
+  const notFoundPage = path.join(CLIENT_DIR, '404.html');
+  if (fs.existsSync(notFoundPage)) {
+    return res.status(404).sendFile(notFoundPage);
+  }
+  res.status(404).send('<h1>404 — Страница не найдена</h1>');
+});
+
+/* ============================================================
+ * 500
+ * ============================================================ */
+app.use((err, req, res, next) => {
+  console.error('Ошибка сервера:', err);
+  res.status(500).json({
+    error: true,
+    message: 'Внутренняя ошибка сервера',
+    field: null
+  });
+});
+
+/* ============================================================
+ * ЗАПУСК
+ * ============================================================ */
+app.listen(PORT, () => {
+  console.log(`✅ Сервер запущен: http://localhost:${PORT}`);
+  console.log(`   API курсов:    http://localhost:${PORT}/api/courses`);
+  console.log(`   Health-check:  http://localhost:${PORT}/api/health`);
+});
