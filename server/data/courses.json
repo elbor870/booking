@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Основы программирования",
+    "description": "Введение в алгоритмы и структуры данных. Python, базовый синтаксис, работа с файлами.",
+    "price": 12000,
+    "duration": 60,
+    "level": "Начальный",
+    "teacher": "Иванов И.И."
+  },
+  {
+    "id": 2,
+    "title": "Веб-разработка: Frontend",
+    "description": "HTML, CSS, JavaScript, адаптивная вёрстка, работа с DOM и fetch API.",
+    "price": 18000,
+    "duration": 90,
+    "level": "Средний",
+    "teacher": "Петрова А.С."
+  },
+  {
+    "id": 3,
+    "title": "Backend на Node.js",
+    "description": "Express, REST API, работа с файлами и JSON, middleware, роутинг.",
+    "price": 22000,
+    "duration": 120,
+    "level": "Продвинутый",
+    "teacher": "Сидоров П.П."
+  },
+  {
+    "id": 4,
+    "title": "Базы данных SQL",
+    "description": "Проектирование БД, нормализация, JOIN-запросы, индексы, транзакции.",
+    "price": 15000,
+    "duration": 75,
+    "level": "Средний",
+    "teacher": "Кузнецова М.В."
+  },
+  {
+    "id": 5,
+    "title": "React и современный фронтенд",
+    "description": "Компоненты, хуки, состояние, React Router, работа с API.",
+    "price": 25000,
+    "duration": 100,
+    "level": "Продвинутый",
+    "teacher": "Морозов Д.А."
+  }
+]
