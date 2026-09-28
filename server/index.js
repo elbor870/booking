@@ -36,6 +36,10 @@ app.use(express.static(CLIENT_DIR));
 const coursesRouter = require('./routes/courses');
 app.use('/api/courses', coursesRouter);
 
+// --- Калькулятор (Ларина А.Е.) ---
+const calculateRouter = require('./routes/calculate');
+app.use('/api', calculateRouter);
+
 // --- Записи (Выдрина В.И.) --- раскомментировать, когда будет готово:
 // const bookingsRouter = require('./routes/bookings');
 // app.use('/api/bookings', bookingsRouter);
